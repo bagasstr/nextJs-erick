@@ -23,9 +23,6 @@ export const getDataProduct = async () => {
 
 const Product = async () => {
   const data = await getDataProduct();
-  if (!data || !Array.isArray(data)) {
-    return <div>Loading or empty data</div>;
-  }
 
   console.log(data);
   return (
