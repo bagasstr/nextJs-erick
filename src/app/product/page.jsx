@@ -1,29 +1,21 @@
-// import { data } from "../Data/ListingTerbaru/DataTerbaru.json";
 import { FaBath, FaBed, FaLocationDot } from "react-icons/fa6";
 import { GiResize } from "react-icons/gi";
 import { BsFillBuildingFill } from "react-icons/bs";
-// import { Link, useParams, useSearchParams } from "react-router-dom";
-
-// import ProductDetail from "./ProductDetail";
 import Link from "next/link";
-import axios from "axios";
 import Image from "next/image";
-import getUser from "../../lib/getUser";
 
 async function getData() {
   const res = await fetch("http://localhost:3000/api/getData", {
-    // cache: "no-store",
     next: {
       revalidate: 20,
     },
   });
-  console.log("fetching data...");
   return res.json();
 }
 
 const page = async () => {
   const data = await getData();
-  console.log(data);
+  // console.log(data);
   return (
     <main>
       <div className="w-full">

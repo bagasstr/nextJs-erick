@@ -55,28 +55,28 @@ const Navbar = ({ primary, white, hidden, bg }) => {
               }`}
             >
               <Link
-                href={"/"}
+                href="/"
                 onClick={() => setMenu((prev) => !menu)}
                 className="font-medium text-lg  mobile:text-white hover:text-primary/75"
               >
                 <li>Home</li>
               </Link>
               <Link
-                href={"/product"}
+                href="/product"
                 onClick={() => setMenu((prev) => !menu)}
                 className="font-medium text-lg  mobile:text-white hover:text-primary/75"
               >
                 <li>Product</li>
               </Link>
               <Link
-                href={"/profile"}
+                href="/profile"
                 onClick={() => setMenu((prev) => !menu)}
                 className="font-medium text-lg  mobile:text-white hover:text-primary/75"
               >
                 <li>Profile</li>
               </Link>
               <Link
-                href={"/contact"}
+                href="/contact"
                 onClick={() => setMenu((prev) => !menu)}
                 className="font-medium text-lg  mobile:text-white hover:text-primary/75"
               >
