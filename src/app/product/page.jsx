@@ -4,17 +4,12 @@ import { BsFillBuildingFill } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 
-const getDataProduct = async () => {
-  const res = await fetch("http://localhost:3000/api/getdata", {
-    // next: {
-    //   revalidate: 20,
-    // },
-    cache: "no-store",
-  });
+export const getDataProduct = async () => {
+  const res = await fetch("http://localhost:3000/api/getdata");
   if (!res.ok) {
     throw new Error("gagal fetching data");
   }
-  const data = res.json();
+  const data = await res.json();
   return data;
 };
 
@@ -29,7 +24,7 @@ const Product = async () => {
           <div className="ListinganTerbaru">
             <h1 className="mobile:text-xl desktop:text-2xl mobile:font-semibold font-semibold text-black/80">
               Listingan Terbaru
-              {/* {data.title} */}
+              {/* {produk.title} */}
             </h1>
             <div className="mobile:grid-cols-1 desktop:justify-items-center grid desktop:grid-cols-3 mobile:items-center">
               {data.map((item) => (
