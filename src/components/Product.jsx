@@ -17,7 +17,7 @@ const Product = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:3000/api/getData");
+        const res = await axios.get("http://localhost:3000/api/getdata");
         const data = await res.data;
         setDatas(data.reverse());
       } catch (error) {
