@@ -8,6 +8,7 @@ import Image from "next/image";
 export const getDataProduct = async () => {
   try {
     const res = await fetch("http://127.0.0.1:8080/api/getdata", {
+      method: "GET",
       cache: "no-store",
     });
     if (!res.ok) {
