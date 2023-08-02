@@ -4,29 +4,31 @@ import { BsFillBuildingFill } from "react-icons/bs";
 import Link from "next/link";
 import Image from "next/image";
 
-async function getData() {
+const getData = async () => {
   const res = await fetch("http://localhost:3000/api/getData", {
     next: {
       revalidate: 20,
     },
+    // cache: "no-store",
   });
-  return res.json();
-}
+  const data = res.json();
+  return data;
+};
 
-const page = async () => {
-  const data = await getData();
-  // console.log(data);
+const Product = async () => {
+  const produkData = await getData();
+  // console.log(typeof produkData);
   return (
-    <main>
+    <>
       <div className="w-full">
         <div className="containers px-2 py-16">
           {/* Listingan Terbaru */}
           <div className="ListinganTerbaru">
             <h1 className="mobile:text-xl desktop:text-2xl mobile:font-semibold font-semibold text-black/80">
-              Listingan Terbarus
+              Listingan Terbaru
             </h1>
             <div className="mobile:grid-cols-1 desktop:justify-items-center grid desktop:grid-cols-3 mobile:items-center">
-              {data.reverse().map((item) => (
+              {produkData.map((item) => (
                 <div
                   key={item.id}
                   className="shadow-lg rounded-md w-fit my-7 pb-4"
@@ -40,7 +42,7 @@ const page = async () => {
                       className="rounded-md shadow-lg desktop:h-[200px] desktop:w-full"
                     />
                     <h1 className="absolute text-white bg-primary px-3 py-1 rounded-md font-semibold text-base top-0">
-                      {item.market.toUpperCase()}
+                      {item.market}
                     </h1>
                   </div>
                   <div className="p-4 rounded-md text-text">
@@ -103,8 +105,8 @@ const page = async () => {
           </div>
         </div>
       </div>
-    </main>
+    </>
   );
 };
 
-export default page;
+export default Product;
