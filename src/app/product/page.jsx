@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const getDataProduct = async () => {
-  const res = await fetch("http://localhost:3000/api/getdata");
+  const res = await fetch("http://127.0.0.1:3000/api/getdata");
   if (!res.ok) {
     throw new Error("gagal fetching data");
   }
