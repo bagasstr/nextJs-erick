@@ -1,5 +1,12 @@
 import Image from "next/image";
-import { Filter, Footer, Hero, Navbar, Product } from "../components";
+import {
+  Filter,
+  Footer,
+  Hero,
+  Navbar,
+  Product,
+  ProductCopy,
+} from "../components";
 
 export default function Home() {
   return (
@@ -7,7 +14,7 @@ export default function Home() {
       <Navbar primary={"text-primary"} white={"text-white"} />
       <Hero />
       <Filter />
-      <Product />
+      <ProductCopy />
       <Footer />
     </main>
   );

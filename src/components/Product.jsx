@@ -8,20 +8,26 @@ import { BsFillBuildingFill } from "react-icons/bs";
 
 // import ProductDetail from "./ProductDetail";
 import Link from "next/link";
+import axios from "axios";
+import Image from "next/image";
 
 const Product = () => {
-  //   const { typeProperty, area } = useParams();
-  //   const [secondary, setSecondary] = useState([]);
-  //   const [primary, setPrimary] = useState([]);
-
-  //   useEffect(() => {
-  //     const filterd = data.filter(
-  //       (produk) => produk.typeProperty === produk.typeProperty
-  //     );
-  //     setSecondary(filterd);
-  //   }, []);
-  //   const pesan = `https://wa.me/+6285156490481?text=Saya ingin beli property ini ${secondary.title}`;
-  // console.log(secondary);
+  const [getDatas, setDatas] = useState([]);
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/getData");
+        const data = await res.data;
+        setDatas(data.reverse());
+      } catch (error) {
+        console.log(`data ga ada ${error}`);
+      }
+    };
+    getData();
+  }, []);
+  const pesan = `https://wa.me/+6285156490481?text=Saya ingin beli property ini `;
+  console.log(getDatas);
   return (
     <div>
       <div className="w-full">
@@ -32,14 +38,16 @@ const Product = () => {
               Listingan Terbaru
             </h1>
             <div className="mobile:grid-cols-1 desktop:justify-items-center grid desktop:grid-cols-3 mobile:items-center">
-              {/* {secondary.map((res, index) => (
+              {getDatas.map((res, index) => (
                 <div
                   key={index}
                   className="shadow-lg rounded-md w-fit my-7 pb-4"
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={res.thumnail}
+                      width={1000}
+                      height={1000}
                       alt="thumnail"
                       className="rounded-md shadow-lg desktop:h-[200px] desktop:w-full"
                     />
@@ -88,7 +96,7 @@ const Product = () => {
                     <hr className="my-2 bg-text/20" />
                     <div className="mt-10 flex mobile:justify-around desktop:justify-center desktop:gap-x-5">
                       <Link
-                        href={`/product/[slug]`}
+                        href={``}
                         className="border-2 border-text text-text mobile:px-4 mobile:py-3 desktop:px-2 desktop:py-1 desktop:text-sm uppercase rounded-md font-semibold shadow-md flex items-center"
                       >
                         Detail Unit
@@ -102,7 +110,7 @@ const Product = () => {
                     </div>
                   </div>
                 </div>
-              ))} */}
+              ))}
             </div>
           </div>
         </div>
