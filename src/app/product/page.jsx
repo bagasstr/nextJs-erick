@@ -24,7 +24,7 @@ export const getDataProduct = async () => {
 const Product = async () => {
   const data = await getDataProduct();
 
-  console.log(data);
+  // console.log(data.listing);
   return (
     <>
       <div className="w-full">
@@ -36,81 +36,79 @@ const Product = async () => {
               {/* {produk.title} */}
             </h1>
             <div className="mobile:grid-cols-1 desktop:justify-items-center grid desktop:grid-cols-3 mobile:items-center">
-              {
-                !Array.isArray(data).map((item) => (
-                  <div
-                    key={item.id}
-                    className="shadow-lg rounded-md w-fit my-7 pb-4"
-                  >
-                    <div className="relative">
-                      <Image
-                        src={item.thumnail}
-                        width={1000}
-                        height={1000}
-                        alt="thumnail"
-                        className="rounded-md shadow-lg desktop:h-[200px] desktop:w-full"
-                      />
-                      <h1 className="absolute text-white bg-primary px-3 py-1 rounded-md font-semibold text-base top-0">
-                        {item.market}
-                      </h1>
+              {data.listing.map((item) => (
+                <div
+                  key={item.id}
+                  className="shadow-lg rounded-md w-fit my-7 pb-4"
+                >
+                  <div className="relative">
+                    <Image
+                      src={item.thumnail}
+                      width={1000}
+                      height={1000}
+                      alt="thumnail"
+                      className="rounded-md shadow-lg desktop:h-[200px] desktop:w-full"
+                    />
+                    <h1 className="absolute text-white bg-primary px-3 py-1 rounded-md font-semibold text-base top-0">
+                      {item.market}
+                    </h1>
+                  </div>
+                  <div className="p-4 rounded-md text-text">
+                    <h1 className="font-semibold desktop:font-medium text-text/60 mb-2">
+                      {item.type}
+                    </h1>
+                    <h1 className="text-2xl desktop:text-lg font-semibold desktop:font-bold">
+                      {item.title}
+                    </h1>
+                    <div className="flex items-center gap-x-2 my-2 text-text/80">
+                      <FaLocationDot className="text-xs" />
+                      <h2 className="text-sm font-medium">{item.area}</h2>
                     </div>
-                    <div className="p-4 rounded-md text-text">
-                      <h1 className="font-semibold desktop:font-medium text-text/60 mb-2">
-                        {item.type}
+                    <div className="mb-4">
+                      <h1 className="text-lg desktop:text-base font-medium text-text/60">
+                        Harga mulai dari
                       </h1>
-                      <h1 className="text-2xl desktop:text-lg font-semibold desktop:font-bold">
-                        {item.title}
-                      </h1>
-                      <div className="flex items-center gap-x-2 my-2 text-text/80">
-                        <FaLocationDot className="text-xs" />
-                        <h2 className="text-sm font-medium">{item.area}</h2>
+                      <h3 className="text-xl desktop:text-xl desktop:font-semibold font-semibold">
+                        {item.harga}
+                      </h3>
+                    </div>
+                    <hr className="my-2 bg-text/20" />
+                    <div className="flex gap-x-4 justify-center">
+                      <div className="flex items-center gap-x-2">
+                        <FaBath className="text-base" />
+                        <h1 className="text-lg font-medium">{item.km}</h1>
                       </div>
-                      <div className="mb-4">
-                        <h1 className="text-lg desktop:text-base font-medium text-text/60">
-                          Harga mulai dari
-                        </h1>
-                        <h3 className="text-xl desktop:text-xl desktop:font-semibold font-semibold">
-                          {item.harga}
-                        </h3>
+                      <div className="flex items-center gap-x-2">
+                        <FaBed className="text-base" />
+                        <h1 className="text-lg font-medium">{item.kt}</h1>
                       </div>
-                      <hr className="my-2 bg-text/20" />
-                      <div className="flex gap-x-4 justify-center">
-                        <div className="flex items-center gap-x-2">
-                          <FaBath className="text-base" />
-                          <h1 className="text-lg font-medium">{item.km}</h1>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <FaBed className="text-base" />
-                          <h1 className="text-lg font-medium">{item.kt}</h1>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <GiResize className="text-base" />
-                          <h1 className="text-lg font-medium">{item.lb}</h1>
-                        </div>
-                        <div className="flex items-center gap-x-2">
-                          <BsFillBuildingFill className="text-base" />
-                          <h1 className="text-lg font-medium">{item?.lbb}</h1>
-                        </div>
+                      <div className="flex items-center gap-x-2">
+                        <GiResize className="text-base" />
+                        <h1 className="text-lg font-medium">{item.lb}</h1>
                       </div>
-                      <hr className="my-2 bg-text/20" />
-                      <div className="mt-10 flex mobile:justify-around desktop:justify-center desktop:gap-x-5">
-                        <Link
-                          href={``}
-                          className="border-2 border-text text-text mobile:px-4 mobile:py-3 desktop:px-2 desktop:py-1 desktop:text-sm uppercase rounded-md font-semibold shadow-md flex items-center"
-                        >
-                          Detail Unit
-                        </Link>
-                        <a
-                          href={`https://wa.me/+62xxxxxxxxx?text=Saya ingin beli property ini ${item.title}`}
-                          className="bg-text text-white px-4 py-3 desktop:py-[.80rem] desktop:px-[1rem] uppercase rounded-md desktop:text-sm font-semibold flex items-center shadow-md"
-                        >
-                          WhatsApp
-                        </a>
+                      <div className="flex items-center gap-x-2">
+                        <BsFillBuildingFill className="text-base" />
+                        <h1 className="text-lg font-medium">{item?.lbb}</h1>
                       </div>
+                    </div>
+                    <hr className="my-2 bg-text/20" />
+                    <div className="mt-10 flex mobile:justify-around desktop:justify-center desktop:gap-x-5">
+                      <Link
+                        href={``}
+                        className="border-2 border-text text-text mobile:px-4 mobile:py-3 desktop:px-2 desktop:py-1 desktop:text-sm uppercase rounded-md font-semibold shadow-md flex items-center"
+                      >
+                        Detail Unit
+                      </Link>
+                      <a
+                        href={`https://wa.me/+62xxxxxxxxx?text=Saya ingin beli property ini ${item.title}`}
+                        className="bg-text text-white px-4 py-3 desktop:py-[.80rem] desktop:px-[1rem] uppercase rounded-md desktop:text-sm font-semibold flex items-center shadow-md"
+                      >
+                        WhatsApp
+                      </a>
                     </div>
                   </div>
-                ))
-              }
+                </div>
+              ))}
             </div>
           </div>
         </div>
