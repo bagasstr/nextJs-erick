@@ -13,7 +13,7 @@ export const getDataProduct = async () => {
     if (!res.ok) {
       throw new Error("gagal fetching data");
     }
-    const data = await res.json();
+    const data = res.json();
     return data;
   } catch (error) {
     console.error("gagal", error);
@@ -22,7 +22,7 @@ export const getDataProduct = async () => {
 };
 
 const Product = async () => {
-  const data = await getDataProduct();
+  const datas = await getDataProduct();
 
   // console.log(data.listing);
   return (
@@ -36,7 +36,7 @@ const Product = async () => {
               {/* {produk.title} */}
             </h1>
             <div className="mobile:grid-cols-1 desktop:justify-items-center grid desktop:grid-cols-3 mobile:items-center">
-              {data.map((item) => (
+              {datas.map((item) => (
                 <div
                   key={item.id}
                   className="shadow-lg rounded-md w-fit my-7 pb-4"
