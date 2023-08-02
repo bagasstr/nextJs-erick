@@ -1,3 +1,4 @@
+import React from "react";
 import { FaBath, FaBed, FaLocationDot } from "react-icons/fa6";
 import { GiResize } from "react-icons/gi";
 import { BsFillBuildingFill } from "react-icons/bs";
@@ -5,12 +6,17 @@ import Link from "next/link";
 import Image from "next/image";
 
 export const getDataProduct = async () => {
-  const res = await fetch("http://127.0.0.1:3000/api/getdata");
-  if (!res.ok) {
-    throw new Error("gagal fetching data");
+  try {
+    const res = await fetch("http://127.0.0.1:8080/api/getdata");
+    if (!res.ok) {
+      throw new Error("gagal fetching data");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("gagal", error);
+    return { props: { data: [] } };
   }
-  const data = await res.json();
-  return data;
 };
 
 const Product = async () => {
