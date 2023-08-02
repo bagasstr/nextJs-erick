@@ -36,7 +36,7 @@ const Product = async () => {
               {/* {produk.title} */}
             </h1>
             <div className="mobile:grid-cols-1 desktop:justify-items-center grid desktop:grid-cols-3 mobile:items-center">
-              {data.listing.map((item) => (
+              {data.map((item) => (
                 <div
                   key={item.id}
                   className="shadow-lg rounded-md w-fit my-7 pb-4"
