@@ -11,8 +11,8 @@ const Product = async () => {
     },
     // cache: "no-store",
   });
-  const data = await res.json();
-  // console.log(typeof produkData);
+  const data = res.json();
+  // console.log(typeof data);
   return (
     <>
       <div className="w-full">
@@ -104,4 +104,4 @@ const Product = async () => {
   );
 };
 
-export default Product;
+// export default Product;
