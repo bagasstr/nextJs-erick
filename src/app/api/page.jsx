@@ -17,7 +17,7 @@ export const getDataProduct = async () => {
     const data = res.json();
     return data;
   } catch (error) {
-    console.error("gagal", error);
+    console.error("gagal fetching data! ", error);
     return { props: { data: [] } };
   }
 };
